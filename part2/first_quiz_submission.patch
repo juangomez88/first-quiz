@@ -1,0 +1,254 @@
+diff --git a/.idea/first-quiz.iml b/.idea/first-quiz.iml
+new file mode 100644
+index 0000000..351d51a
+--- /dev/null
++++ b/.idea/first-quiz.iml
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="PYTHON_MODULE" version="4">
++  <component name="NewModuleRootManager">
++    <content url="file://$MODULE_DIR$" />
++    <orderEntry type="jdk" jdkName="Python 3.11 (venv)" jdkType="Python SDK" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++</module>
+\ No newline at end of file
+diff --git a/part2/.idea/.gitignore b/part2/.idea/.gitignore
+new file mode 100644
+index 0000000..26d3352
+--- /dev/null
++++ b/part2/.idea/.gitignore
+@@ -0,0 +1,3 @@
++# Default ignored files
++/shelf/
++/workspace.xml
+diff --git a/part2/.idea/compiler.xml b/part2/.idea/compiler.xml
+new file mode 100644
+index 0000000..77c1d82
+--- /dev/null
++++ b/part2/.idea/compiler.xml
+@@ -0,0 +1,13 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="CompilerConfiguration">
++    <annotationProcessing>
++      <profile name="Maven default annotation processors profile" enabled="true">
++        <sourceOutputDir name="target/generated-sources/annotations" />
++        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
++        <outputRelativeToContentRoot value="true" />
++        <module name="vz-first-quiz" />
++      </profile>
++    </annotationProcessing>
++  </component>
++</project>
+\ No newline at end of file
+diff --git a/part2/.idea/encodings.xml b/part2/.idea/encodings.xml
+new file mode 100644
+index 0000000..aa00ffa
+--- /dev/null
++++ b/part2/.idea/encodings.xml
+@@ -0,0 +1,7 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="Encoding">
++    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
++    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
++  </component>
++</project>
+\ No newline at end of file
+diff --git a/part2/.idea/jarRepositories.xml b/part2/.idea/jarRepositories.xml
+new file mode 100644
+index 0000000..712ab9d
+--- /dev/null
++++ b/part2/.idea/jarRepositories.xml
+@@ -0,0 +1,20 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="RemoteRepositoriesConfiguration">
++    <remote-repository>
++      <option name="id" value="central" />
++      <option name="name" value="Central Repository" />
++      <option name="url" value="https://repo.maven.apache.org/maven2" />
++    </remote-repository>
++    <remote-repository>
++      <option name="id" value="central" />
++      <option name="name" value="Maven Central repository" />
++      <option name="url" value="https://repo1.maven.org/maven2" />
++    </remote-repository>
++    <remote-repository>
++      <option name="id" value="jboss.community" />
++      <option name="name" value="JBoss Community repository" />
++      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
++    </remote-repository>
++  </component>
++</project>
+\ No newline at end of file
+diff --git a/part2/.idea/misc.xml b/part2/.idea/misc.xml
+new file mode 100644
+index 0000000..b487a3b
+--- /dev/null
++++ b/part2/.idea/misc.xml
+@@ -0,0 +1,12 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ExternalStorageConfigurationManager" enabled="true" />
++  <component name="MavenProjectsManager">
++    <option name="originalFiles">
++      <list>
++        <option value="$PROJECT_DIR$/pom.xml" />
++      </list>
++    </option>
++  </component>
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" project-jdk-name="11" project-jdk-type="JavaSDK" />
++</project>
+\ No newline at end of file
+diff --git a/part2/.idea/vcs.xml b/part2/.idea/vcs.xml
+new file mode 100644
+index 0000000..6c0b863
+--- /dev/null
++++ b/part2/.idea/vcs.xml
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+diff --git a/part2/pom.xml b/part2/pom.xml
+index 3117aed..f22145f 100644
+--- a/part2/pom.xml
++++ b/part2/pom.xml
+@@ -25,6 +25,11 @@
+       <version>5.10.0</version>
+       <scope>test</scope>
+     </dependency>
++      <dependency>
++          <groupId>commons-beanutils</groupId>
++          <artifactId>commons-beanutils</artifactId>
++          <version>1.7.0</version>
++      </dependency>
+   </dependencies>
+ 
+   <build>
+diff --git a/part2/src/main/java/org/velezreyes/quiz/question6/Drink.java b/part2/src/main/java/org/velezreyes/quiz/question6/Drink.java
+index 61c1fdd..0f737a1 100644
+--- a/part2/src/main/java/org/velezreyes/quiz/question6/Drink.java
++++ b/part2/src/main/java/org/velezreyes/quiz/question6/Drink.java
+@@ -1,5 +1,7 @@
+ package org.velezreyes.quiz.question6;
+ 
++import java.lang.String;
++
+ public interface Drink {
+   public String getName();
+ 
+diff --git a/part2/src/main/java/org/velezreyes/quiz/question6/DrinkImpl.java b/part2/src/main/java/org/velezreyes/quiz/question6/DrinkImpl.java
+new file mode 100644
+index 0000000..a756d12
+--- /dev/null
++++ b/part2/src/main/java/org/velezreyes/quiz/question6/DrinkImpl.java
+@@ -0,0 +1,21 @@
++package org.velezreyes.quiz.question6;
++
++public class DrinkImpl implements Drink {
++    private String name;
++    private boolean isFizzy;
++
++    public DrinkImpl(String name, boolean isFizzy) {
++        this.name = name;
++        this.isFizzy = isFizzy;
++    }
++
++    @Override
++    public String getName() {
++        return name;
++    }
++
++    @Override
++    public boolean isFizzy() {
++        return isFizzy;
++    }
++}
+diff --git a/part2/src/main/java/org/velezreyes/quiz/question6/VendingMachine.java b/part2/src/main/java/org/velezreyes/quiz/question6/VendingMachine.java
+index 3f92825..69f37b3 100644
+--- a/part2/src/main/java/org/velezreyes/quiz/question6/VendingMachine.java
++++ b/part2/src/main/java/org/velezreyes/quiz/question6/VendingMachine.java
+@@ -1,5 +1,6 @@
+ package org.velezreyes.quiz.question6;
+ 
++
+ public interface VendingMachine {
+ 
+   public void insertQuarter();
+diff --git a/part2/src/main/java/org/velezreyes/quiz/question6/VendingMachineImpl.java b/part2/src/main/java/org/velezreyes/quiz/question6/VendingMachineImpl.java
+index 85742c4..d1164c4 100644
+--- a/part2/src/main/java/org/velezreyes/quiz/question6/VendingMachineImpl.java
++++ b/part2/src/main/java/org/velezreyes/quiz/question6/VendingMachineImpl.java
+@@ -1,9 +1,64 @@
+ package org.velezreyes.quiz.question6;
+ 
+-public class VendingMachineImpl {
++import java.util.HashMap;
++import java.util.Map;
++
++import org.velezreyes.quiz.question6.Drink;
++
++public class VendingMachineImpl implements VendingMachine{
++  private Map<String, Drink> drinks;
++  private Map<String, Integer> drinkPrices;
++
++  private int balance;
++
++  private static VendingMachineImpl instance;
++  public VendingMachineImpl(){
++    this.drinks = new HashMap<>();
++    this.drinks.put("ScottCola", new DrinkImpl("ScottCola", true));
++    this.drinks.put("KarenTea", new DrinkImpl("KarenTea", false));
++
++    this.drinkPrices = new HashMap<>();
++    this.drinkPrices.put("ScottCola", 75);
++    this.drinkPrices.put("KarenTea", 100);
++
++    this.balance = 0;
++  }
+ 
+   public static VendingMachine getInstance() {
+     // Fix me!
+-    return null;
++    if(instance == null) {
++      instance = new VendingMachineImpl();
++    }
++
++    return instance;
++  }
++
++  @Override
++  public void insertQuarter() {
++    this.balance += 25;
++  }
++
++  @Override
++  public Drink pressButton(String name) throws NotEnoughMoneyException, UnknownDrinkException {
++    if (!this.drinks.containsKey(name)) {
++      throw new UnknownDrinkException();
++    }
++    int drinkPrice = getDrinkPrice(name); // Obtener el precio de la bebida (puedes implementar esta función)
++    if (this.balance < drinkPrice) {
++      throw new NotEnoughMoneyException();
++    }
++    this.balance -= drinkPrice;
++    return this.drinks.get(name);
++  }
++
++  private int getDrinkPrice(String name) throws UnknownDrinkException {
++    if (drinkPrices.containsKey(name)) {
++      return drinkPrices.get(name);
++    }
++    throw new UnknownDrinkException();
+   }
++
++
+ }
++
++
